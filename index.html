@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      /* ===== DUO STATE Web Flyer ===== */
+      :root{
+        --bg-soft: #f4fcff;   /* 섹션 배경 */
+        --card: #ffffff;      /* 카드/콘텐츠 배경 */
+        --ink: #032d60;       /* 메인 텍스트 */
+        --muted:#53657a;      /* 보조 텍스트 */
+        --accent:#0070c9;     /* 포인트 */
+        --accent2:#00b3a4;    /* 보조 포인트(그래디언트) */
+        --shadow: 0 12px 32px rgba(0, 35, 90, .10);
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .ds-flyer{
+        background: radial-gradient(1200px 600px at 80% -10%, rgba(0,179,164,.12), transparent 60%),
+                    var(--bg-soft);
+        padding: clamp(48px, 8vw, 96px) 20px;
+        position: relative;
+        overflow: hidden;
+      }
+      .ds-flyer:before{
+        /* 양쪽 상단 은은한 라이트 */
+        content:"";
+        position:absolute; inset:-10% -10% auto -10%;
+        height: 45%;
+        background: radial-gradient(600px 300px at 10% 0%, rgba(0,112,201,.15), transparent 60%);
+        pointer-events:none;
+      }
+
+      .ds-flyer__inner{
+        max-width: 1080px; margin: 0 auto;
+        background: var(--card);
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+        padding: clamp(28px, 4.8vw, 48px);
+      }
+
+      /* 헤드라인 */
+
+
+      .ds-flyer__head {
+        text-align: center;   /* 가운데 정렬 */
+        margin-bottom: 20px;
+      }
+
+      .ds-flyer__head h1 {
+        font-size: clamp(32px, 5vw, 56px);
+        line-height: 1.2;
+        color: var(--ink);
+        font-weight: 900;
+      }
+      .ds-flyer__badge{
+        display:inline-block;
+        margin: 0 auto clamp(6px, 1.5vw, 36px);   /* 아래쪽 여백 추가 */
+        background: var(--card);
+        color:black;
+        font-weight: 900;
+        letter-spacing:.08em;
+        padding: clamp(6px, 2vw, 14px) clamp(18px, 2vw, 36px);        /* ← 패딩 크게 */
+        border-radius: 5px;
+        font-size: clamp(12px, 2vw, 24px);         /* ← 폰트 크게 */
+        box-shadow: 0 8px 20px rgba(0,112,201,.25);
+      }
+      .ds-flyer__badge a{
+        text-decoration:none; color: inherit;
+      }
+      .ds-flyer__title{
+        margin: 14px 0 14px;
+        font-size: clamp(26px, 4.2vw, 44px);
+        line-height: 1.12;
+        color: var(--ink);
+        font-weight: 900;
+        letter-spacing: .01em;
+      }
+      
+      .ds-flyer__title span{
+        background: linear-gradient(90deg, var(--accent), var(--accent2));
+        -webkit-background-clip: text; background-clip: text;
+        color: transparent;     
+        line-height: 2em;   
+      }
+      
+      .ds-flyer__subtitle{
+        margin: 0 0 24px;
+        color: var(--muted);
+        font-size: clamp(14px, 1.8vw, 18px);
+      }
+
+      /* 장점 리스트 */
+      .ds-flyer__benefits-title {
+        text-align: center;
+        font-size: 1.6rem;
+        font-weight: 900;
+        color: var(--ink);
+        margin: 28px 0 18px;
+      }
+      .ds-flyer__benefits{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: clamp(14px, 2vw, 22px);
+        list-style: none; padding: 0; margin: 0 0 28px;
+      }
+      .ds-flyer__benefits li{
+        background: #f8fbff;
+        border: 1px solid #e6f2ff;
+        border-radius: 14px;
+        padding: 16px 16px 14px;
+      }
+      .ds-flyer__benefits strong{
+        display:block; color: var(--ink); font-size: 1.05rem; margin-bottom: 6px;
+      }
+      .ds-flyer__benefits span{
+        color: var(--muted); font-size: .95rem; line-height: 1.5;
+      }
+
+      /* CTA & 가격 */
+      .ds-flyer__cta{
+        display: grid; 
+        gap: 14px; 
+        justify-items: center; 
+        margin: clamp(6px, 2vw, 14px) 0 clamp(6px, 2vw, 14px);
+      }
+      .ds-flyer__price{
+        text-align:center;
+      }
+      .ds-flyer__price-tag{
+        display: inline-block;
+        background: #eef7ff;
+        border: 1px solid #d5eaff;
+        color: var(--ink);
+        padding: 10px 14px;
+        border-radius: 999px;
+        font-weight: 800;
+        box-shadow: inset 0 -1px 0 #ffffff, 0 2px 8px rgba(0,112,201,.08);
+      }
+      .ds-flyer__price-tag b{
+        color: var(--accent);
+      }
+      .ds-flyer__price-sub{
+        display:block; 
+        /* margin-top: 8px;  */
+        margin: clamp(6px, 2vw, 14px) 0 clamp(4px, 1vw, 8px);
+        color: var(--muted);
+        font-size: .95rem;
+      }
+
+      .ds-btn{
+        display:inline-block; text-decoration:none; font-weight:800;
+        padding: clamp(5px, 2vw, 12px) clamp(14px, 2vw, 36px); 
+        border-radius: 10px;
+        transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+        font-size: clamp(8px, 2vw, 20px);
+      }
+      .ds-btn--primary{
+        background: linear-gradient(180deg, #1185e0, var(--accent));
+        color:#fff; box-shadow: 0 10px 22px rgba(0,112,201,.25);
+      }
+      .ds-btn--primary:hover{ transform: translateY(-2px); 
+        filter: brightness(1.05); 
+        background: #2e844a;
+      }
+
+      .ds-btn--ghost{
+        background:#fff; color: var(--accent);
+        border: 1px solid #cfe7ff;
+      }
+      .ds-btn--ghost:hover{ transform: translateY(-2px); box-shadow: 0 6px 14px rgba(0,112,201,.12); }
+
+      /* 하단 강조 */
+      .ds-flyer__footer{
+        margin-top: 18px; text-align:center; color: var(--ink); font-weight: 800;
+      }
+      .ds-flyer__footer .dot{
+        display:inline-block; width:6px; height:6px; border-radius:999px;
+        background: var(--accent); margin: 0 8px;
+      }
+
+      /* 반응형 */
+      @media (max-width: 900px){
+        .ds-flyer__benefits{ grid-template-columns: 1fr; }
+      }
+
+    </style>
+</head>
+<body>
+  
+  <section class="ds-flyer" aria-label="DUO STATE 웹 광고 전단">
+  <a href="https://duostate.com.vn/" target="_blank">
+  <div class="ds-flyer__inner">
+
+    <!-- 헤드라인 -->
+    <div class="ds-flyer__head">
+      
+      <h1 class="ds-flyer__title">
+        한국 재무제표 & 베트남 재무제표 <br><span>한 번에 작성</span>
+      </h1>
+      <div class="ds-flyer__badge"><a href="https://duostate.com.vn/" target="_blank">DUO STATE</a></div>
+    </div>
+
+    <!-- 핵심 장점 -->
+    <!-- <h2 class="ds-flyer__benefits-title">DUO STATE 사용 이점</h2>
+    <ul class="ds-flyer__benefits">
+      <li>
+        <strong>변환 시간·비용 0</strong>
+        <span>베트남 재무제표를 한국식 재무제표로 변환하는 데 소요되는 시간과 비용 완전 제거</span>
+      </li>
+      
+      <li>
+        <strong>동시 작성</strong>
+        <span>한 번의 회계처리로 베트남 재무제표와 한국 더존 양식 재무제표 동시 작성</span>
+      </li>
+    </ul> -->
+
+    <!-- 가격/CTA -->
+    <div class="ds-flyer__cta">
+      <div class="ds-flyer__price">
+        <!-- <span class="ds-flyer__price-tag">월 <b>20달러대</b>로</span> -->
+        <span class="ds-flyer__price-sub">회계프로그램의 혁신을 경험하세요</span>
+      </div>
+      <a class="ds-btn ds-btn--primary" href="https://duostate.com.vn/">더 보러 가기</a>
+    </div>
+
+    <!-- 하단 강조 -->
+    <div class="ds-flyer__footer">
+      <p>한 번의 회계처리로 <span class="dot"></span>한국과 베트남 양국 재무제표 동시 작성</p>
+    </div>
+  </div>
+  </a>
+</section>
+
+</body>
+</html>
