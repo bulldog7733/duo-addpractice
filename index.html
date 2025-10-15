@@ -98,33 +98,6 @@
         font-size: clamp(14px, 1.8vw, 18px);
       }
 
-      /* 장점 리스트 */
-      .ds-flyer__benefits-title {
-        text-align: center;
-        font-size: 1.6rem;
-        font-weight: 900;
-        color: var(--ink);
-        margin: 28px 0 18px;
-      }
-      .ds-flyer__benefits{
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: clamp(14px, 2vw, 22px);
-        list-style: none; padding: 0; margin: 0 0 28px;
-      }
-      .ds-flyer__benefits li{
-        background: #f8fbff;
-        border: 1px solid #e6f2ff;
-        border-radius: 14px;
-        padding: 16px 16px 14px;
-      }
-      .ds-flyer__benefits strong{
-        display:block; color: var(--ink); font-size: 1.05rem; margin-bottom: 6px;
-      }
-      .ds-flyer__benefits span{
-        color: var(--muted); font-size: .95rem; line-height: 1.5;
-      }
-
       /* CTA & 가격 */
       .ds-flyer__cta{
         display: grid; 
@@ -153,8 +126,8 @@
         /* margin-top: 8px;  */
         margin: clamp(6px, 2vw, 14px) 0 clamp(4px, 1vw, 8px);
         color: var(--muted);
-        font-size: .95rem;
-        font-weight: 400;
+        font-size: 1.2rem;
+        font-weight: 600;
       }
 
       .ds-btn{
@@ -181,7 +154,7 @@
 
       /* 하단 강조 */
       .ds-flyer__footer{
-        margin-top: 18px; text-align:center; color: var(--ink); font-weight: 500;
+        margin-top: 18px; text-align:center; color: var(--ink); font-weight: 400;font-size: 0.95rem;
       }
       .ds-flyer__footer .dot{
         display:inline-block; width:6px; height:6px; border-radius:999px;
@@ -191,6 +164,59 @@
       /* 반응형 */
       @media (max-width: 900px){
         .ds-flyer__benefits{ grid-template-columns: 1fr; }
+      }
+
+
+       .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+        color: #667eea;
+        padding: 14px 32px;
+        border-radius: 50px;
+        font-weight: 800;
+        font-size: 16px;
+        letter-spacing: 0.8px;
+        margin-bottom: 32px;
+        box-shadow: 0 4px 16px rgba(102, 126, 234, 0.2), 
+                    0 0 0 1px rgba(102, 126, 234, 0.1);
+        transition: all 0.3s ease;
+        text-decoration: none;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .badge::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+        transition: left 0.5s ease;
+      }
+
+      .badge:hover::after {
+        left: 100%;
+      }
+
+      .badge:hover {
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 6px 24px rgba(102, 126, 234, 0.3), 
+                    0 0 0 2px rgba(102, 126, 234, 0.2);
+      }
+
+      .badge::before {
+        content: '◆';
+        font-size: 12px;
+        color: #764ba2;
+      }
+      
+      .badge .small {
+        font-size: 0.75em;
+        opacity: 0.8;
       }
 
     </style>
@@ -207,14 +233,17 @@
       <h1 class="ds-flyer__title">
         한국 재무제표 & 베트남 재무제표 <br><span>한 번에 작성</span>
       </h1>
-      <div class="ds-flyer__badge"><a href="https://duostate.com.vn/" target="_blank">DUO <span class="small">State</span></a></div>
-    </div>    
+      <a href="https://duostate.com.vn/" target="_blank" class="badge">
+        DUO State
+      </a>      
+    </div>
 
+
+  
     <!-- 가격/CTA -->
     <div class="ds-flyer__cta">
-      <div class="ds-flyer__price">
-        <!-- <span class="ds-flyer__price-tag">월 <b>20달러대</b>로</span> -->
-        <span class="ds-flyer__price-sub">한국 더존 양식의 재무제표로 보고받으세요.</span>
+      <div class="ds-flyer__price">        
+        <span class="ds-flyer__price-sub">한국 더존 양식의 베트남 재무제표로 보고받으세요.</span>
       </div>
       <a class="ds-btn ds-btn--primary" href="https://duostate.com.vn/">더 보러 가기</a>
     </div>
@@ -229,4 +258,3 @@
 
 </body>
 </html>
-
